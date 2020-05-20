@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mtms-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    image: mtms-client:1.0
+    command: npm start
+    volumes:
+      - '.:/app'
+    ports:
+      - '4200:4200'

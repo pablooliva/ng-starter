@@ -1,0 +1,28 @@
+{
+  "name": "mtms",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "prettier": "prettier --parser typescript --write '**/*.ts'",
+    "start": "ng serve --host 0.0.0.0",
+    "build": "ng build",
+    "test": "snyk test && ng test",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --parser typescript --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
