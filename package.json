@@ -6,7 +6,11 @@
     "prettier": "prettier --parser typescript --write '**/*.ts'",
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
-    "test": "snyk test && ng test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:deploy": "snyk test && test",
+    "test:ci": "jest --runInBand",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -28,11 +32,18 @@
     "@angular-devkit/build-angular": "~0.901.6",
     "@angular/cli": "~9.1.6",
     "@angular/compiler-cli": "~9.1.7",
+    "@types/jest": "^25.2.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.2.2",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.4",
+    "jest": "^26.0.1",
+    "jest-preset-angular": "^8.2.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "lint-staged": "^10.2.6",
     "prettier": "2.0.5",
+    "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
@@ -46,5 +57,15 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/test.ts"
+    ],
+    "verbose": true
   }
 }
