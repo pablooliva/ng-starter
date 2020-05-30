@@ -4,7 +4,7 @@ COPY . /app
 RUN apk add git
 RUN git config --global user.email "p.oliva@memodo.de"
 RUN git config --global user.name "Pablo Oliva"
-RUN npm install
+# RUN npm install
 RUN npm install g @angular/cli
 RUN npm link @angular/cli
 EXPOSE 4200
